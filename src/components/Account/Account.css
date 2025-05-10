@@ -1,0 +1,14 @@
+.center {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  align-items: center;
+  height: 50vh;
+  margin: 0 auto; 
+  margin-top: calc((100vh - 70vh) / 2);
+}
+
+.ac-row {
+  display: flex;
+  gap: 10px;
+}

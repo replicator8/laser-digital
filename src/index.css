@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Play:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Play:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Play", sans-serif;
+  color: #bfc7d1;
+  background-image: url("https://laserkinetics.ru/img/header-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-color: #090f18;
+}
+
+.footer {
+  margin-top: 30px;
+  position: relative;
+  padding: 25px 15px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background-color: #fff;
+}
+
+.yellow {
+  color: #fff200;
+}

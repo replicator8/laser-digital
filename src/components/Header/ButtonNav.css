@@ -1,0 +1,20 @@
+.button, .button-active  {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: bold;
+  margin-right: 1rem;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-family: Play, sans-serif;
+  font-size: 15px;
+}
+
+.button {
+  color: #bfc7d1;
+}
+
+.button:hover, .button-active {
+  color: #fff200;
+}

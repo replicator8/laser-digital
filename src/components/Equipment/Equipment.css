@@ -1,0 +1,70 @@
+.info {
+  padding: 3rem 2rem;
+}
+
+.info h3 {
+  color: #fff;
+  font-size: 30px;
+  text-transform: uppercase;
+  margin: 10px 0;
+  font-weight: 900;
+}
+
+.info p {
+  font-weight: 300;
+  line-height: 1.5em;
+}
+
+span {
+  color: #fff200;
+}
+
+.equipments {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 100px;
+    gap: 70px;
+}
+
+.equipmens-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 40px;
+}
+
+.equipment-block {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background: rgb(53,60,69);
+    background: linear-gradient(0deg, rgba(53,60,69,1) 58%, rgba(9,15,24,1) 58%);
+    width: 346px;
+    height: auto;
+    padding: 0px 20px;
+    justify-content: space-between;
+}
+
+.equipment-img {
+    width: 300px;
+    height: 300px;
+    display: block;
+}
+
+.equipment-title {
+    font-size: 22px;
+    color: #FFF200;
+    text-decoration: underline;
+    font-weight: 600;
+    margin: 0px;
+}
+
+.equipment-hint {
+    font-size: 16px;
+    color: #BFC7D1;
+    margin-bottom: 20px;
+}
+
+.equipment-block > a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}

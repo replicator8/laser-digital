@@ -1,0 +1,17 @@
+.btn-submit {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    background-color: #fff200;
+    transition: all 0.3s;
+    font-weight: bold;
+    font-family: "Play", sans-serif;
+    font-size: 16px;
+}
+
+.btn-submit:hover {
+    opacity: 0.8;
+}

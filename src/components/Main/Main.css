@@ -1,0 +1,133 @@
+.about-company,
+.how-work,
+.main-content,
+.block-content {
+  padding: 3rem 2rem;
+}
+
+.about-company h3,
+.how-work h3 {
+  color: #fff;
+  font-size: 30px;
+  text-transform: uppercase;
+  margin: 10px 0;
+  font-weight: 900;
+}
+
+span {
+  color: #fff200;
+}
+
+.about-company p {
+  font-weight: 300;
+  line-height: 1.5em;
+}
+
+.how-work {
+  background-image: url(https://laserkinetics.ru/img/how-we-work-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 350px;
+}
+
+.work-blocks {
+  display: flex;
+  gap: 50px;
+  margin: 30px 0px;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+}
+
+.block-title {
+  font-size: 24px;
+  font-family: "Play", sans-serif;
+  color: #fff200;
+  margin: 0px;
+}
+
+.block-hint {
+  font-size: 18px;
+}
+
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-content-text {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 50px;
+  font-family: "Play";
+  font-weight: 700;
+  margin-left: 20px;
+}
+
+.main-content-text p {
+  margin: 10px;
+  margin-left: -20px;
+}
+
+.main-content-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.main-content-photo {
+  position: relative;
+}
+
+.main-content-photo img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+}
+
+.main-content-equipment {
+  position: absolute;
+  bottom: 20px;
+  border: 1px solid #2f3235;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 25px 30px;
+  color: #fff;
+}
+
+.main-content-equipment-first {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.main-content-equipment-second {
+  font-size: 18px;
+  color: #9599a2;
+  margin: 0;
+}
+
+.hint {
+  font-size: 16px;
+  color: #bfc7d1;
+  text-transform: uppercase;
+}
+
+.block-content {
+  display: flex;
+  justify-content: center;
+}
+
+.blocks > p {
+  font-size: 18px;
+}
+
+.blocks {
+  border-left: 2px solid #242a34;
+  padding: 10px 30px;
+}
