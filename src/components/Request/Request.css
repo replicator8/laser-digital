@@ -9,7 +9,8 @@
 }
 
 .create-request,
-.active-r, .archive-r {
+.active-r,
+.archive-r {
   background-color: #fff;
   border-radius: 10px;
   height: 180px;
@@ -30,11 +31,98 @@
   opacity: 0.8;
 }
 
-.active-requests, .archive-requests {
+.active-requests,
+.archive-requests {
   display: flex;
   overflow-x: auto;
   flex-wrap: nowrap;
   scroll-behavior: smooth;
   max-width: 100%;
   gap: 0.7rem;
+}
+
+.active-r,
+.archive-r {
+  display: flex;
+  flex-direction: column;
+  font-size: 19px;
+  align-items: start;
+  padding: 1rem 1rem;
+  color: #000;
+  font-weight: 900;
+  font-family: "Play", sans-serif;
+  text-transform: uppercase;
+  line-height: 35px;
+}
+
+.control {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #000;
+  font-size: 15px;
+  font-weight: 900;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+textarea {
+  resize: vertical;
+  max-height: 150px;
+  min-height: 34px;
+}
+
+.create-event-form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label, .eq-ar {
+  font-size: 20px;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.cr-footer {
+  display: flex;
+  justify-content: end;
+  margin-right: 0rem;
+  align-items: end;
+  gap: 20px;
+}
+
+.cr-footer > :last-child {
+  margin-right: 0rem;
+}
+
+.modal-h {
+  background-color: #080f18;
+  position: sticky;
+  top: -17px;
+  z-index: 1000;
+}
+
+.content-arc {
+  display: flex;
+}
+
+.left-arc,
+.right-arc {
+  line-height: 30px;
+}
+
+li {
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 900;
+  list-style-type: none;
+}
+
+select {
+  opacity: 1;
+}
+
+.eq-ar {
+  margin: 0;
 }

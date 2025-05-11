@@ -14,7 +14,13 @@ export default function Modal({ children, open }) {
   }, [open]);
 
   return createPortal(
-    <dialog ref={dialog}>{children}</dialog>,
+    <>
+      {open && <div className="modal-overlay" />}
+
+      <dialog ref={dialog} className="modal-dialog">
+        {children}
+      </dialog>
+    </>,
     document.getElementById("modal")
   );
 }

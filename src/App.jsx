@@ -17,8 +17,8 @@ export default function App() {
       .post(
         "http://localhost:8002/auth/login",
         {
-          email: "test@example.com",
-          password: "test1234",
+          email: "user@user.com",
+          password: "user",
         },
         {
           withCredentials: true,

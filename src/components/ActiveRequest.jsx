@@ -1,7 +1,9 @@
-export default function ActiveRequest() {
+export default function ActiveRequest({ activeEvent }) {
   return (
-    <div className="active-r">
-      
+    <div>
+      <p>{activeEvent.title}</p>
+      <p>{activeEvent.date}</p>
+      <p>смета: {activeEvent.estimate} руб.</p>
     </div>
   );
 }
