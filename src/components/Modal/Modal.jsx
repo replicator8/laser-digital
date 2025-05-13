@@ -2,7 +2,7 @@ import { createPortal } from "react-dom";
 import "./Modal.css";
 import { useRef, useEffect } from "react";
 
-export default function Modal({ children, open }) {
+export default function Modal({ children, open, isArchive }) {
   const dialog = useRef();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function Modal({ children, open }) {
     <>
       {open && <div className="modal-overlay" />}
 
-      <dialog ref={dialog} className="modal-dialog">
+      <dialog ref={dialog} className={isArchive ? "modal-dialog-arc" : "modal-dialog"}>
         {children}
       </dialog>
     </>,

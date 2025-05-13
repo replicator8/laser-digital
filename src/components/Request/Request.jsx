@@ -548,18 +548,26 @@ export default function Request() {
             disabled={true}
           />
         </form>
-        <p className="eq-ar"><span>Приборы:</span></p>
+        <p className="eq-ar">
+          <span>Приборы:</span>
+        </p>
         <ul>
           {selectedActiveEventDetails?.equipment.map((eq) => (
             <li key={Math.random()}>{eq}</li>
           ))}
         </ul>
         <br />
-        <h3 className="eq-ar"><span>Итоговая смета: {selectedActiveEventDetails?.estimate} руб.</span></h3>
-        <h3 className="eq-ar"><span>Скидка: {selectedActiveEventDetails?.discount * 100}%</span></h3>
+        <h3 className="eq-ar">
+          <span>
+            Итоговая смета: {selectedActiveEventDetails?.estimate} руб.
+          </span>
+        </h3>
+        <h3 className="eq-ar">
+          <span>Скидка: {selectedActiveEventDetails?.discount * 100}%</span>
+        </h3>
       </Modal>
 
-      <Modal open={modalArchive}>
+      <Modal open={modalArchive} isArchive={true}>
         <div className="modal-h">
           <h3 style={{ color: "#fff" }} className="cr-title">
             <span>Название:</span> {selectedArchiveEventDetails?.title}
@@ -577,36 +585,35 @@ export default function Request() {
         </div>
         <div className="content-arc">
           <div className="left-arc">
-            <h2>
-              <span>Кратко о мероприятии:</span>
+            <h2 style={{marginBottom: '0.5rem'}}>
+              <span>Кратко о <br />мероприятии:</span>
             </h2>
-            <h3>
-              <span>Дата мероприятия: </span>
+            <h3>Дата мероприятия: {" "}
               {selectedArchiveEventDetails?.event_date}
             </h3>
             <h3>
-              <span>Место проведения: </span>
+              Место проведения: {" "}
               {selectedArchiveEventDetails?.address}
             </h3>
             <h3>
-              <span>Количество приборов: </span>
+              Количество приборов: {" "}
               {selectedArchiveEventDetails?.equipment_count}
             </h3>
             <h3>
-              <span>Общая мощность: </span>
+              Общая мощность: {" "}
               {selectedArchiveEventDetails?.total_power}
             </h3>
             <h3>
-              <span>Художник по свету: </span>
+              Художник по свету: {" "}
               {selectedArchiveEventDetails?.lighting_designer}
             </h3>
             <h3>
-              <span>Общая сумма: </span>
+              Общая сумма: {" "}
               {selectedArchiveEventDetails?.total_sum}
             </h3>
           </div>
           <div className="right-arc">
-            <h2>
+            <h2 style={{marginBottom: '0.5rem'}}>
               <span>Световые приборы на мероприятии:</span>
             </h2>
             <ul>

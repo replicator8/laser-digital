@@ -34,12 +34,11 @@ dialog {
   z-index: 100;
   background-color: #080f18;
   color: white;
-  overflow-y: auto; /* Возможность скролла, если контент большой */
+  overflow-y: auto;
 }
 
-/* Убираем стандартные стили браузера для <dialog> */
 dialog::backdrop {
-  display: none; /* Отключаем стандартное затемнение */
+  display: none;
 }
 
 .cr-title {
