@@ -1,4 +1,5 @@
 import "./Request.css";
+import Popup from "../Popup/Popup"
 import ActiveRequest from "../ActiveRequest";
 import ArchiveRequest from "../ArchiveRequest";
 import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
@@ -7,6 +8,7 @@ import axios, { isAxiosError } from "axios";
 import Modal from "../Modal/Modal";
 
 export default function Request() {
+  const [showPopup, setShowPopup] = useState(false);
   const [activeRequests, setActiveRequests] = useState([]);
   const [archiveRequests, setArchiveRequests] = useState([]);
   const [selectedActiveEventDetails, setSelectedActiveEventDetails] =
@@ -122,6 +124,7 @@ export default function Request() {
   }, []);
 
   function createRequest(e) {
+    handleShowPopup()
     e.preventDefault();
     setIsSubmitted(true);
 
@@ -161,6 +164,7 @@ export default function Request() {
         getActiveRequests();
         setModal(false);
         resetForm();
+        handleShowPopup();
       })
       .catch((error) => {
         if (isAxiosError(error)) {
@@ -178,6 +182,14 @@ export default function Request() {
         }
       });
   }
+
+  const handleShowPopup = () => {
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
 
   return (
     <section style={{ marginLeft: "20px" }}>
@@ -219,6 +231,12 @@ export default function Request() {
           </div>
         ))}
       </div>
+
+      <Popup
+        message="Заявка успешно создана!"
+        isVisible={showPopup}
+        onClose={handleClosePopup}
+      />
 
       <Modal open={modal}>
         <div className="modal-h">
@@ -585,35 +603,27 @@ export default function Request() {
         </div>
         <div className="content-arc">
           <div className="left-arc">
-            <h2 style={{marginBottom: '0.5rem'}}>
-              <span>Кратко о <br />мероприятии:</span>
+            <h2 style={{ marginBottom: "0.5rem" }}>
+              <span>
+                Кратко о <br />
+                мероприятии:
+              </span>
             </h2>
-            <h3>Дата мероприятия: {" "}
-              {selectedArchiveEventDetails?.event_date}
-            </h3>
+            <h3>Дата мероприятия: {selectedArchiveEventDetails?.event_date}</h3>
+            <h3>Место проведения: {selectedArchiveEventDetails?.address}</h3>
             <h3>
-              Место проведения: {" "}
-              {selectedArchiveEventDetails?.address}
-            </h3>
-            <h3>
-              Количество приборов: {" "}
+              Количество приборов:{" "}
               {selectedArchiveEventDetails?.equipment_count}
             </h3>
+            <h3>Общая мощность: {selectedArchiveEventDetails?.total_power}</h3>
             <h3>
-              Общая мощность: {" "}
-              {selectedArchiveEventDetails?.total_power}
-            </h3>
-            <h3>
-              Художник по свету: {" "}
+              Художник по свету:{" "}
               {selectedArchiveEventDetails?.lighting_designer}
             </h3>
-            <h3>
-              Общая сумма: {" "}
-              {selectedArchiveEventDetails?.total_sum}
-            </h3>
+            <h3>Общая сумма: {selectedArchiveEventDetails?.total_sum}</h3>
           </div>
           <div className="right-arc">
-            <h2 style={{marginBottom: '0.5rem'}}>
+            <h2 style={{ marginBottom: "0.5rem" }}>
               <span>Световые приборы на мероприятии:</span>
             </h2>
             <ul>
