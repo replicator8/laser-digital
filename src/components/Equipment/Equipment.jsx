@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 import InfoSection from "./InfoSection";
 import axios from "axios";
 import Modal from "../Modal/Modal";
-import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
+import CategoryInfo from "./CategoryInfo";
 
 export default function Equipment() {
   const [loading, setLoading] = useState(false);
@@ -12,6 +12,7 @@ export default function Equipment() {
   const [isEquipments, setIsEquipments] = useState(false);
   const [modal, setModal] = useState(false);
   const [pribor, setPribor] = useState(null);
+  const [currentEquipment, setCurrentEquipment] = useState(null);
   const [currentCategorySlug, setCurrentCategorySlug] = useState(null);
 
   const getCategories = useCallback(async () => {
@@ -54,6 +55,7 @@ export default function Equipment() {
       .then((response) => {
         const equipments = response.data;
         setEquipments(equipments.equipments);
+        setCurrentEquipment(equipments);
         setIsEquipments(true);
       });
   }
@@ -119,7 +121,10 @@ export default function Equipment() {
       {isEquipments && (
         <>
           <section className="info">
-            <InfoSection />
+            <CategoryInfo
+              title={currentEquipment?.title}
+              description={currentEquipment?.description}
+            />
           </section>
 
           {equipments.length > 0 && (
@@ -181,7 +186,7 @@ export default function Equipment() {
               ([key, value]) => (
                 <div key={key} className="spec-row">
                   <span className="spec-name">{key}:</span>
-                  
+
                   <span className="spec-value">{value}</span>
                 </div>
               )
