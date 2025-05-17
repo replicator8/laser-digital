@@ -39,3 +39,32 @@ body {
 .yellow {
   color: #fff200;
 }
+
+.active-block-progress,
+.archive-block-progress {
+  font-size: 12px;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: flex-end;
+}
+
+.active-block-progress {
+  color: #b795e1;
+}
+
+.archive-block-progress {
+  color: #73cc00;
+}
+
+.arequest-item {
+  display: flex;
+  flex-direction: column;
+  width: -webkit-fill-available;
+}
+
+.logo-active,
+.logo-archive {
+  width: 20px;
+}
