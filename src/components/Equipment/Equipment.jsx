@@ -123,10 +123,25 @@ export default function Equipment() {
           <section className="info">
             <CategoryInfo
               title={currentEquipment?.title}
-              description={currentEquipment?.description}
+              description={
+                currentEquipment?.description !== null
+                  ? currentEquipment?.description
+                  : "Описания пока нет :)"
+              }
             />
           </section>
 
+          {equipments.length === 0 && (
+            <p
+              style={{
+                textAlign: "center",
+                fontSize: "20px",
+                fontWeight: "900",
+              }}
+            >
+              Нет оборудования!
+            </p>
+          )}
           {equipments.length > 0 && (
             <div className="equipments">
               {groupCategories(equipments, 3).map((row, rowIndex) => (
@@ -184,7 +199,15 @@ export default function Equipment() {
           <div className="modal-specs">
             {Object.entries(pribor?.characteristics || {}).map(
               ([key, value]) => (
-                <div key={key} className="spec-row">
+                <div
+                  key={key}
+                  className="spec-row"
+                  style={{
+                    border: "1px dashed #fff",
+                    borderRadius: "5px",
+                    padding: "0.5rem 1rem",
+                  }}
+                >
                   <span className="spec-name">{key}:</span>
 
                   <span className="spec-value">{value}</span>
@@ -196,7 +219,11 @@ export default function Equipment() {
 
         <div className="modal-description">
           <h4>Описание</h4>
-          <p>{pribor?.description}</p>
+          <p>
+            {pribor?.description != null
+              ? pribor?.description
+              : "Пока нет описания :)"}
+          </p>
         </div>
       </Modal>
     </>

@@ -1,13 +1,15 @@
 import "./Account.css";
 import AccountRow from "./AccountRow";
-import { useEffect, useCallback, useState } from "react";
+import { useEffect, useCallback, useState, useContext } from "react";
 import axios from "axios";
 import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
+import { AuthContext } from "../AuthContext";
 
 export default function Account() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const { setLoginPage } = useContext(AuthContext);
 
   const getUser = useCallback(async () => {
     axios
@@ -44,7 +46,7 @@ export default function Account() {
       )
       .then(function (response) {
         console.log(response);
-        //TODO: redirect to auth.html
+        setLoginPage(true);
       });
   }
 

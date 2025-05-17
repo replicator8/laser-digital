@@ -20,11 +20,11 @@ export default function Request() {
   const [modalActive, setModalActive] = useState(false);
   const [dtStart, setDtStart] = useState("");
   const [dtEnd, setDtEnd] = useState("");
-  const [type, setType] = useState("концерт");
+  const [type, setType] = useState("Концерт");
   const [name, setName] = useState("");
   const [plan, setPlan] = useState("");
   const [address, setAddress] = useState("");
-  const [payment, setPayment] = useState("ип");
+  const [payment, setPayment] = useState("ИП");
   const [square, setSquare] = useState(1);
   const [height, setHeight] = useState(1);
   const [isRecord, setIsRecord] = useState("false");
@@ -38,11 +38,11 @@ export default function Request() {
   const resetForm = () => {
     setDtStart("");
     setDtEnd("");
-    setType("концерт");
+    setType("Концерт");
     setName("");
     setPlan("");
     setAddress("");
-    setPayment("ип");
+    setPayment("ИП");
     setSquare(1);
     setHeight(1);
     setIsRecord("false");
@@ -124,7 +124,6 @@ export default function Request() {
   }, []);
 
   function createRequest(e) {
-    handleShowPopup()
     e.preventDefault();
     setIsSubmitted(true);
 
@@ -281,10 +280,10 @@ export default function Request() {
             value={type}
             onChange={(e) => setType(e.target.value)}
           >
-            <option value="концерт">Концерт</option>
-            <option value="свадьба">Свадьба</option>
-            <option value="корпоратив">Корпоратив</option>
-            <option value="день рождения">День рождения</option>
+            <option value="Концерт">Концерт</option>
+            <option value="Свадьба">Свадьба</option>
+            <option value="Корпоратив">Корпоратив</option>
+            <option value="День рождения">День рождения</option>
           </select>
           <label htmlFor="name">Наименование мероприятия</label>
           <input
@@ -324,9 +323,9 @@ export default function Request() {
             value={payment}
             onChange={(e) => setPayment(e.target.value)}
           >
-            <option value="ип">ИП</option>
-            <option value="ооо">ООО</option>
-            <option value="физ. лицо">Физ. лицо</option>
+            <option value="ИП">ИП</option>
+            <option value="ОО">ООО</option>
+            <option value="Физ. лицо">Физ. лицо</option>
           </select>
           <label htmlFor="square">Площадь площадки, м^2</label>
           <input
@@ -406,7 +405,6 @@ export default function Request() {
               Отправить заявку
             </ButtonSubmit>
           </div>
-          {/* <pre>{JSON.stringify({ hasError, isSubmitted }, null, 2)}</pre> */}
         </form>
       </Modal>
 

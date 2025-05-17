@@ -1,0 +1,43 @@
+.login-page-back {
+  background-image: none;
+  background-color: #080f18;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-page {
+  width: 25vw;
+  background-color: #080f18;
+  text-align: center;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-login a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.form-login a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.login-title {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 30px;
+}
+
+.error-msg-login {
+  margin-top: 0.5rem;
+  color: red;
+  font-size: 20px;
+}
