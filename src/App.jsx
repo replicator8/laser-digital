@@ -30,6 +30,9 @@ export default function App() {
       );
       if (response.status === 200) {
         setSkipLogin(true);
+        if (response.data.role === "admin") {
+          setRole("admin");
+        }
       } else if (response.status !== 200) {
         setSkipLogin(false);
       }
@@ -45,12 +48,18 @@ export default function App() {
     checkToken();
   }, [checkToken]);
 
+  function changeTab(current) {
+    setTab(current);
+  }
+
   return (
     <>
-      <AuthContext.Provider value={{ setLoginPage, setRegisterPage, setRole }}>
+      <AuthContext.Provider
+        value={{ setLoginPage, setRegisterPage, setRole, setSkipLogin }}
+      >
         {((skipLogin && loginPage) || (!loginPage && !registerPage)) && (
           <>
-            <Header onChange={(current) => setTab(current)} active={tab} />
+            <Header onChange={(current) => changeTab(current)} active={tab} />
             <main>
               {tab === "main" && <Main />}
               {tab === "equipment" && <Equipment />}

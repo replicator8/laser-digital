@@ -6,6 +6,7 @@ import Modal from "../Modal/Modal";
 import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
 import Popup from "../Popup/Popup";
 import CustomSelect from "../CustomSelect/CustomSelect";
+import useWebSocket, { ReadyState } from "react-use-websocket";
 
 export default function AdminRequest() {
   const [showPopup, setShowPopup] = useState(false);
@@ -13,12 +14,21 @@ export default function AdminRequest() {
   const [modalActive, setModalActive] = useState(false);
   const [selectedActiveEventDetails, setSelectedActiveEventDetails] =
     useState(null);
+  const [currentEventId, setCurrentEventId] = useState(null);
   const [equipments, setEquipments] = useState([]);
   const [selectedEquipments, setSelectedEquipments] = useState({});
   const [manager_name, setManager_name] = useState("");
   const [manager_phone_number, setManager_phone_number] = useState("");
   const [sum, setSum] = useState(0);
   const [discount, setDiscount] = useState(0);
+
+  const { sendMessage, lastMessage, readyState } = useWebSocket(
+    "/ws/event",
+    {
+      shouldReconnect: (closeEvent) => true,
+      reconnectInterval: 3000,
+    }
+  );
 
   const getAllRequests = useCallback(async () => {
     try {
@@ -48,6 +58,7 @@ export default function AdminRequest() {
           }
         );
         setSelectedActiveEventDetails(response.data);
+        setCurrentEventId(eventId);
         console.log(response.data);
         await getEquipments();
         setModalActive(true);
@@ -68,7 +79,6 @@ export default function AdminRequest() {
         }
       );
       setEquipments(response.data.equipments);
-      console.log(response.data.equipments);
     } catch (error) {
       console.error("Ошибка получения всех приборов:", error);
     }
@@ -114,8 +124,30 @@ export default function AdminRequest() {
 
   function sendClient(e) {
     e.preventDefault();
-    console.log("POST...");
     console.log(selectedEquipments);
+
+    const currentEq = Object.values(selectedEquipments).map((item) => ({
+      title: item.title,
+      quantity: item.count,
+    }));
+
+    axios
+      .post(
+        `http://localhost:8002/events/admin/confirm_event/${currentEventId}`,
+        {
+          event_id: currentEventId,
+          discount: parseInt(discount, 10),
+          manager_username: manager_name,
+          manager_phone_number: manager_phone_number,
+          equipments: currentEq,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then(function (response) {
+        console.log(response);
+      });
 
     handleCloseModal();
     handleShowPopup();
@@ -341,10 +373,6 @@ export default function AdminRequest() {
                 <li key={Math.random()}>{eq}</li>
               ))}
             </ul>
-
-            <ButtonSubmit>
-              Отправить заказчику и сформировать смету
-            </ButtonSubmit>
           </form>
 
           <form className="adjust-equipment">
@@ -422,6 +450,9 @@ export default function AdminRequest() {
                 />
               </div>
             </div>
+            <ButtonSubmit>
+              Отправить заказчику и сформировать смету
+            </ButtonSubmit>
           </form>
         </div>
       </Modal>

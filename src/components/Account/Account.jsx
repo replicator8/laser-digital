@@ -10,6 +10,7 @@ export default function Account() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const { setLoginPage } = useContext(AuthContext);
+  const { setSkipLogin } = useContext(AuthContext);
 
   const getUser = useCallback(async () => {
     axios
@@ -18,7 +19,6 @@ export default function Account() {
       })
       .then((response) => {
         const user = response.data;
-        console.log("User data:", user);
         setName(user.username);
         setEmail(user.email);
         setPhone(user.phone_number);
@@ -45,7 +45,7 @@ export default function Account() {
         }
       )
       .then(function (response) {
-        console.log(response);
+        setSkipLogin(false);
         setLoginPage(true);
       });
   }
