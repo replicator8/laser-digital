@@ -37,6 +37,23 @@ dialog {
   overflow-y: auto;
 }
 
+.modal-admin-dialog {
+  width: 69vw;
+  height: 80vh;
+  margin: auto;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  z-index: 100;
+  background-color: #080f18;
+  color: white;
+  overflow-y: auto;
+}
+
 dialog::backdrop {
   display: none;
 }
@@ -51,6 +68,7 @@ dialog::backdrop {
 .modal-h {
   display: flex;
   justify-content: space-between;
+  width: auto;
 }
 
 .m-close-photo,

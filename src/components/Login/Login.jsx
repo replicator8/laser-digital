@@ -33,7 +33,6 @@ export default function Login() {
       .then(function (response) {
         console.log(response);
         if (response.data.role === "user" || response.data.role === "admin") {
-          console.log(response.data.role);
           setLoginPage(false);
           setRole(response.data.role);
         }

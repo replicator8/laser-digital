@@ -23,3 +23,8 @@ header h3 {
 nav {
   display: flex;
 }
+
+.header-comp-title {
+  display: flex;
+  gap: 40px;
+}

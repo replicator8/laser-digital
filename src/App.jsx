@@ -1,5 +1,5 @@
 import "./index.css";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer";
 import Main from "./components/Main/Main";
@@ -11,17 +11,44 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import { AuthContext } from "./components/AuthContext";
 import AdminRequest from "./components/AdminRequest/AdminRequest";
+import axios from "axios";
 
 export default function App() {
   const [tab, setTab] = useState("main");
   const [loginPage, setLoginPage] = useState(true);
   const [registerPage, setRegisterPage] = useState(false);
   const [role, setRole] = useState("user");
+  const [skipLogin, setSkipLogin] = useState(false);
+
+  const checkToken = useCallback(async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8002/auth/check_refresh_token",
+        {
+          withCredentials: true,
+        }
+      );
+      if (response.status === 200) {
+        setSkipLogin(true);
+      } else if (response.status !== 200) {
+        setSkipLogin(false);
+      }
+    } catch (error) {
+      console.error(
+        "Error checking token:",
+        error.response?.data || error.message
+      );
+    }
+  }, []);
+
+  useEffect(() => {
+    checkToken();
+  }, [checkToken]);
 
   return (
     <>
       <AuthContext.Provider value={{ setLoginPage, setRegisterPage, setRole }}>
-        {!loginPage && !registerPage && (
+        {((skipLogin && loginPage) || (!loginPage && !registerPage)) && (
           <>
             <Header onChange={(current) => setTab(current)} active={tab} />
             <main>
@@ -35,7 +62,7 @@ export default function App() {
             <Footer />{" "}
           </>
         )}
-        {loginPage && <Login />}
+        {loginPage && !skipLogin && <Login />}
         {registerPage && <Register />}
       </AuthContext.Provider>
     </>

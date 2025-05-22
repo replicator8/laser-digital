@@ -1,0 +1,45 @@
+.custom-select-container {
+  margin-bottom: 1.5rem;
+}
+
+.custom-select {
+  cursor: pointer;
+}
+
+.options-list {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+  margin-top: 0.25rem;
+  color: #000;
+}
+
+.option-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+  width: 470px;
+}
+
+.option-item:last-child {
+  border-bottom: none;
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.controls button {
+  padding: 0 0.5rem;
+  font-size: 1rem;
+  min-width: 24px;
+  text-align: center;
+  cursor: pointer;
+}

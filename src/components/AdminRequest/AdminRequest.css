@@ -28,3 +28,50 @@
   align-items: center;
   gap: 30px;
 }
+
+.adm-r-dates,
+.adm-mini {
+  display: flex;
+  gap: 10px;
+}
+
+.adm-date,
+.adm-lb-dt {
+  width: fit-content;
+}
+
+.adm-input {
+  width: 470px;
+}
+
+.adm-r-dtStart,
+.adm-r-dtEnd {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.adm-big-lb {
+  width: 470px;
+}
+
+.adm-forms {
+  display: flex;
+  gap: 20px;
+}
+
+.adm-inputs-mini {
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+}
+
+.adm-label-set {
+  width: auto;
+}
+
+.adm-eq-list {
+  border: 2px dashed #fff;
+  border-radius: 5px;
+  padding: 0.5rem;
+}

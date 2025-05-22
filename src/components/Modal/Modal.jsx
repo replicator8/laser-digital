@@ -2,8 +2,16 @@ import { createPortal } from "react-dom";
 import "./Modal.css";
 import { useRef, useEffect } from "react";
 
-export default function Modal({ children, open, isArchive }) {
+export default function Modal({ children, open, isArchive, isAdmin }) {
   const dialog = useRef();
+  let name = "";
+  if (isAdmin) {
+    name = "modal-admin-dialog";
+  } else if (isArchive) {
+    name = "modal-dialog-arc";
+  } else {
+    name = "modal-dialog";
+  }
 
   useEffect(() => {
     if (open) {
@@ -17,7 +25,7 @@ export default function Modal({ children, open, isArchive }) {
     <>
       {open && <div className="modal-overlay" />}
 
-      <dialog ref={dialog} className={isArchive ? "modal-dialog-arc" : "modal-dialog"}>
+      <dialog ref={dialog} className={name}>
         {children}
       </dialog>
     </>,

@@ -1,5 +1,5 @@
 import "./Request.css";
-import Popup from "../Popup/Popup"
+import Popup from "../Popup/Popup";
 import ActiveRequest from "../ActiveRequest";
 import ArchiveRequest from "../ArchiveRequest";
 import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
@@ -57,7 +57,7 @@ export default function Request() {
   const getActiveRequests = useCallback(async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8002/events/get_active",
+        "http://localhost:8002/events/active",
         {
           withCredentials: true,
         }
@@ -74,7 +74,7 @@ export default function Request() {
   const getArchiveRequests = useCallback(async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8002/events/get_archive",
+        "http://localhost:8002/events/archive",
         {
           withCredentials: true,
         }
@@ -96,7 +96,7 @@ export default function Request() {
   const handleActiveRequestClick = useCallback(async (eventId) => {
     try {
       const response = await axios.get(
-        `http://localhost:8002/events/get_active/${eventId}`,
+        `http://localhost:8002/events/active/${eventId}`,
         {
           withCredentials: true,
         }
@@ -111,7 +111,7 @@ export default function Request() {
   const handleArchiveRequestClick = useCallback(async (eventId) => {
     try {
       const response = await axios.get(
-        `http://localhost:8002/events/get_archive/${eventId}`,
+        `http://localhost:8002/events/archive/${eventId}`,
         {
           withCredentials: true,
         }
@@ -564,10 +564,14 @@ export default function Request() {
             disabled={true}
           />
         </form>
-        <p className="eq-ar">
+        <p className="eq-ar" style={{ marginBottom: "0.5rem" }}>
           <span>Приборы:</span>
         </p>
-        <ul>
+
+        <ul className="adm-eq-list">
+          {selectedActiveEventDetails?.equipment.length === 0 && (
+            <p>Пока пусто :)</p>
+          )}
           {selectedActiveEventDetails?.equipment.map((eq) => (
             <li key={Math.random()}>{eq}</li>
           ))}
