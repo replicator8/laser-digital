@@ -324,7 +324,7 @@ export default function Request() {
             onChange={(e) => setPayment(e.target.value)}
           >
             <option value="ИП">ИП</option>
-            <option value="ОО">ООО</option>
+            <option value="ООО">ООО</option>
             <option value="Физ. лицо">Физ. лицо</option>
           </select>
           <label htmlFor="square">Площадь площадки, м^2</label>

@@ -6,7 +6,7 @@ import Modal from "../Modal/Modal";
 import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
 import Popup from "../Popup/Popup";
 import CustomSelect from "../CustomSelect/CustomSelect";
-import useWebSocket, { ReadyState } from "react-use-websocket";
+import useWebSocket from "react-use-websocket";
 
 export default function AdminRequest() {
   const [showPopup, setShowPopup] = useState(false);
