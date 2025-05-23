@@ -22,13 +22,52 @@ export default function AdminRequest() {
   const [sum, setSum] = useState(0);
   const [discount, setDiscount] = useState(0);
 
-  const { sendMessage, lastMessage, readyState } = useWebSocket(
-    "/ws/event",
-    {
-      shouldReconnect: (closeEvent) => true,
-      reconnectInterval: 3000,
+  const { lastMessage, sendMessage, readyState } = useWebSocket(`ws://localhost:8002/ws/event`, {
+    shouldReconnect: (closeEvent) => {
+      console.log("WebSocket closed:", closeEvent);
+      return true;
+    },
+    reconnectInterval: 3000,
+    onOpen: () => console.log("WebSocket connected"),
+    onClose: () => console.log("WebSocket disconnected"),
+    onError: (error) => console.error("WebSocket error:", error),
+    options: { withCredentials: true },
+  });
+
+  useEffect(() => {
+    return () => {
+      setAllRequests([]);
+      setSelectedActiveEventDetails(null);
+      setCurrentEventId(null);
+      setSelectedEquipments({});
+      setEquipments([]);
+      setManager_name("");
+      setManager_phone_number("");
+      setSum(0);
+      setDiscount(0);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (lastMessage !== null) {
+      try {
+        const newEvent = JSON.parse(lastMessage.data);
+
+        setAllRequests((prevRequests) => {
+          const exists = prevRequests.some(
+            (req) => req.event_id === newEvent.event_id
+          );
+          if (!exists) {
+            return [newEvent, ...prevRequests];
+          }
+          return prevRequests;
+        });
+        console.log(newEvent);
+      } catch (error) {
+        console.error("Ошибка парсинга сообщения:", error);
+      }
     }
-  );
+  }, [lastMessage]);
 
   const getAllRequests = useCallback(async () => {
     try {

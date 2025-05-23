@@ -583,7 +583,7 @@ export default function Request() {
           </span>
         </h3>
         <h3 className="eq-ar">
-          <span>Скидка: {selectedActiveEventDetails?.discount * 100}%</span>
+          <span>Скидка: {selectedActiveEventDetails?.discount}%</span>
         </h3>
       </Modal>
 
